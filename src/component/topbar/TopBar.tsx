@@ -40,7 +40,7 @@ const Topbar = () => {
                 <div
                   className="swiper-slide"
                   style={{
-                    width: "1296px",
+                    width: "100%",
                     opacity: "1",
                     transform: "translate3d(0px, 0px, 0px)",
                     transitionDuration: "0ms",
