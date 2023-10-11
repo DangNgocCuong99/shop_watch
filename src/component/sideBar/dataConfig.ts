@@ -4,20 +4,23 @@ export const headerMenuItems = [
         href: '/',
         title: 'Trang chủ',
         content: 'Trang chủ',
-        children: []
+        children: [],
+        isOpen: false
     },
     {
         type: "item",
         href: '/gioi-thieu',
         title: 'Giới thiệu',
         content: 'Giới thiệu',
-        children: []
+        children: [],
+        isOpen: false
     },
     {
         type: 'items',
         href: '/thuong-hieu',
         title: 'Thương hiệu',
         content: 'Thương hiệu',
+        isOpen: false,
         img: {
             type: 'img',
             title: 'Thương hiệu',
@@ -37,6 +40,7 @@ export const headerMenuItems = [
                 href: '/cac-hang-ban-chay',
                 title: 'CÁC HÃNG BÁN CHẠY',
                 content: 'CÁC HÃNG BÁN CHẠY',
+                isOpen: false,
                 children: [
                     {
                         href: "/daniel-wellington-dw",
@@ -88,6 +92,7 @@ export const headerMenuItems = [
                 href: '/khuyen-dung',
                 title: 'KHUYÊN DÙNG',
                 content: 'KHUYÊN DÙNG',
+                isOpen: false,
                 children: [
                     {
                         href: "/koi",
@@ -129,6 +134,7 @@ export const headerMenuItems = [
                 href: '/cac-dong-dac-biet',
                 title: 'CÁC DÒNG ĐẶC BIỆT',
                 content: 'CÁC DÒNG ĐẶC BIỆT',
+                isOpen: false,
                 children: [
                     {
                         href: "/limited-edition",
@@ -170,6 +176,7 @@ export const headerMenuItems = [
         href: '/dong-ho-nam',
         title: 'Đồng hồ nam',
         content: 'Đồng hồ nam',
+        isOpen: false,
         img: {
             type: 'img',
             title: 'Thương hiệu',
@@ -189,6 +196,7 @@ export const headerMenuItems = [
                 href: '/cac-hang-ban-chay',
                 title: 'CÁC HÃNG BÁN CHẠY',
                 content: 'CÁC HÃNG BÁN CHẠY',
+                isOpen: false,
                 children: [
                     {
                         href: "/daniel-wellington-dw",
@@ -240,6 +248,7 @@ export const headerMenuItems = [
                 href: '/khuyen-dung',
                 title: 'KHUYÊN DÙNG',
                 content: 'KHUYÊN DÙNG',
+                isOpen: false,
                 children: [
                     {
                         href: "/koi",
@@ -281,6 +290,7 @@ export const headerMenuItems = [
                 href: '/cac-dong-dac-biet',
                 title: 'CÁC DÒNG ĐẶC BIỆT',
                 content: 'CÁC DÒNG ĐẶC BIỆT',
+                isOpen: false,
                 children: [
                     {
                         href: "/limited-edition",
@@ -322,6 +332,7 @@ export const headerMenuItems = [
         href: '/dong-ho-nu',
         title: 'Đồng hồ nữ',
         content: 'Đồng hồ nữ',
+        isOpen: false,
         img: {
             type: 'img',
             title: 'Thương hiệu',
@@ -341,6 +352,7 @@ export const headerMenuItems = [
                 href: '/cac-hang-ban-chay',
                 title: 'CÁC HÃNG BÁN CHẠY',
                 content: 'CÁC HÃNG BÁN CHẠY',
+                isOpen: false,
                 children: [
                     {
                         href: "/daniel-wellington-dw",
@@ -392,6 +404,7 @@ export const headerMenuItems = [
                 href: '/khuyen-dung',
                 title: 'KHUYÊN DÙNG',
                 content: 'KHUYÊN DÙNG',
+                isOpen: false,
                 children: [
                     {
                         href: "/koi",
@@ -433,6 +446,7 @@ export const headerMenuItems = [
                 href: '/cac-dong-dac-biet',
                 title: 'CÁC DÒNG ĐẶC BIỆT',
                 content: 'CÁC DÒNG ĐẶC BIỆT',
+                isOpen: false,
                 children: [
                     {
                         href: "/limited-edition",
