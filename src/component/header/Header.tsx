@@ -1,8 +1,101 @@
 import "./index.css";
 import Cart from "../cart/Cart";
 import SearchHeader from "../searchHeader/searchHeader";
+import { headerMenuItems } from './dataConfig'
 
 const Header = () => {
+
+    function listItemsDetail(children: any, sideBar: boolean) {
+        if (Array.isArray(children)) {
+            if (sideBar === false) {
+                return children.map(item => (
+                    <li className="leve12">
+                        <a href={item.href} title={item.title}>{item.content}</a>
+                    </li>
+                ))
+            } else {
+                return children.map(item => (
+                    <li>
+                        <a href={item.href} title={item.title} className="a3">{item.content}</a>
+                    </li>
+                ))
+            }
+        }
+    }
+
+    function detailsNav(children: any, sideBar: boolean) {
+        if (Array.isArray(children)) {
+            if (sideBar === false) {
+                return children.map(item => (
+                    <li className="level1 parent item fix-navs" data-title={item.dataTitle} data-link={item.dataLink}>
+                        <a className="hmega" href={item.href} title={item.title}>{item.content}</a>
+                        <ul className="level1">
+                            {listItemsDetail(item.children, sideBar)}
+                        </ul>
+                    </li>
+                ))
+            } else {
+                return children.map(item => (
+                    <li className="current">
+                        <a className="caret-down" href={item.href} title={item.title}>
+                            {item.content}
+                        </a>
+                        <i className="fa fa-caret-down current"></i>
+                        <ul>
+                            {listItemsDetail(item.children, sideBar)}
+                        </ul>
+                    </li>
+
+                ))
+            }
+        }
+
+    }
+
+
+    const headerMenuElements = headerMenuItems.map((item) => {
+        if (item.type === 'item') {
+            return (
+                <li className="nav-item">
+                    <a href={item.href} className="a-img" title={item.title}>{item.title}</a>
+                </li>
+            )
+        } else if (item.type === 'items') {
+
+            return (
+                <li className="nav-item has-mega current">
+                    <a href={item.href} className="a-img caret-down" title={item.title}>{item.content}</a>
+                    <i className="fa fa-caret-down current"></i>
+                    <div className="mega-content d-lg-block d-none">
+                        <div className="row">
+                            <div className="col-lg-9">
+                                <ul className="leve10">
+                                    {detailsNav(item.children, false)}
+                                </ul>
+                            </div>
+                            {/* Image */}
+                            <div className="col-lg-3">
+                                <a className=" image-effect" href="#" title={item.img?.title}>
+                                    <img
+                                        width={item.img?.width}
+                                        height={item.img?.height}
+                                        className="lazyload loaded"
+                                        src={item.img?.src}
+                                        data-src={item.img?.dataSrc}
+                                        alt={item.img?.alt}
+                                        data-was-processed={item.img?.dataWasProcessed} />
+                                </a>
+                            </div>
+                            {/* Image */}
+                        </div>
+                    </div>
+                    <div className="item_small d-lg-none d-blog">
+                        {detailsNav(item.children, true)}
+                    </div>
+                </li>
+            )
+        }
+    })
 
     return (
         <>
@@ -89,7 +182,7 @@ const Header = () => {
                         {/* header-control */}
                         <div className="col-lg-5 header-control col-12">
 
-                            <SearchHeader/>
+                            <SearchHeader />
 
                             <ul className="ul-control-right">
 
@@ -118,16 +211,60 @@ const Header = () => {
                                 <li className="header-wishlist d-lg-flex d-none">
                                     <a title="Sản phẩm yêu thích" href="/san-pham-yeu-thich" className="button-wishlist icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 40 40"><defs></defs>
-                                        <path className="cls-1" d="M20,38.38a2.14,2.14,0,0,1-1.4-.53c-1.41-1.24-2.78-2.4-4-3.43a73.47,73.47,0,0,1-8.72-8.2,13.06,13.06,0,0,1-3.5-8.59,11,11,0,0,1,2.8-7.54,9.53,9.53,0,0,1,7-3.08h.11a8.94,8.94,0,0,1,5.52,1.92A11,11,0,0,1,20,11.18,12.13,12.13,0,0,1,22.2,8.93,8.89,8.89,0,0,1,27.71,7h.11a9.53,9.53,0,0,1,7,3.08,11,11,0,0,1,2.8,7.54,13.06,13.06,0,0,1-3.5,8.59,73.53,73.53,0,0,1-8.73,8.19c-1.2,1-2.57,2.2-4,3.44a2.14,2.14,0,0,1-1.4.53ZM12.19,9.19a7.35,7.35,0,0,0-5.41,2.37,8.84,8.84,0,0,0-2.22,6.06,10.89,10.89,0,0,0,3,7.21A73.66,73.66,0,0,0,16,32.75c1.2,1,2.55,2.18,4,3.41l4-3.41a72.9,72.9,0,0,0,8.46-7.92,10.89,10.89,0,0,0,3-7.21,8.84,8.84,0,0,0-2.22-6.06,7.35,7.35,0,0,0-5.41-2.37,6.8,6.8,0,0,0-4.28,1.46,9.8,9.8,0,0,0-2.36,2.73A1.37,1.37,0,0,1,20,14a1.41,1.41,0,0,1-.7-.19,1.51,1.51,0,0,1-.47-.47,9.8,9.8,0,0,0-2.36-2.73,6.8,6.8,0,0,0-4.2-1.46Z"></path></svg>
+                                            <path className="cls-1" d="M20,38.38a2.14,2.14,0,0,1-1.4-.53c-1.41-1.24-2.78-2.4-4-3.43a73.47,73.47,0,0,1-8.72-8.2,13.06,13.06,0,0,1-3.5-8.59,11,11,0,0,1,2.8-7.54,9.53,9.53,0,0,1,7-3.08h.11a8.94,8.94,0,0,1,5.52,1.92A11,11,0,0,1,20,11.18,12.13,12.13,0,0,1,22.2,8.93,8.89,8.89,0,0,1,27.71,7h.11a9.53,9.53,0,0,1,7,3.08,11,11,0,0,1,2.8,7.54,13.06,13.06,0,0,1-3.5,8.59,73.53,73.53,0,0,1-8.73,8.19c-1.2,1-2.57,2.2-4,3.44a2.14,2.14,0,0,1-1.4.53ZM12.19,9.19a7.35,7.35,0,0,0-5.41,2.37,8.84,8.84,0,0,0-2.22,6.06,10.89,10.89,0,0,0,3,7.21A73.66,73.66,0,0,0,16,32.75c1.2,1,2.55,2.18,4,3.41l4-3.41a72.9,72.9,0,0,0,8.46-7.92,10.89,10.89,0,0,0,3-7.21,8.84,8.84,0,0,0-2.22-6.06,7.35,7.35,0,0,0-5.41-2.37,6.8,6.8,0,0,0-4.28,1.46,9.8,9.8,0,0,0-2.36,2.73A1.37,1.37,0,0,1,20,14a1.41,1.41,0,0,1-.7-.19,1.51,1.51,0,0,1-.47-.47,9.8,9.8,0,0,0-2.36-2.73,6.8,6.8,0,0,0-4.2-1.46Z"></path></svg>
                                         <span className="count js-wishlist-count js-wishlist-count-mobile">1</span>
                                     </a>
 
                                 </li>
 
-                              <Cart/>
+                                <Cart />
                             </ul>
 
 
+                        </div>
+                    </div>
+                </div>
+                <div className="header-menu">
+                    <div className="container" style={{ position: "relative" }}>
+                        <div className="header-menu-des">
+                            <nav className="header-nav current">
+                                <ul className="item_big">
+                                    <li>
+                                        <a className="logo-sitenav d-lg-none d-block" href="/" title="Logo">
+                                            <img width="172" height="50" src="//bizweb.dktcdn.net/100/487/743/themes/912230/assets/logo.png?1696125396195" alt="Dola Watch" />
+                                        </a>
+                                    </li>
+                                    <li className="d-lg-none d-block account-mb">
+                                        <ul>
+                                            <li>
+                                                <a href="/account/register" title="Đăng ký">
+                                                    Đăng ký
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/account/login" title="Đăng nhập">
+                                                    Đăng nhập
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li className="d-block d-lg-none title-danhmuc">
+                                        <span>Menu chính</span>
+                                    </li>
+                                    {/* header menu */}
+                                    {headerMenuElements}
+                                    {/* header menu */}
+                                    <li className="d-lg-none d-block item-mb">
+                                        <a href="/he-thong-cua-hang" title="Hệ thống cửa hàng">
+                                            Hệ thống cửa hàng
+                                        </a>
+                                        <a href="/san-pham-yeu-thich" title="Sản phẩm Yêu thích">
+                                            Sản phẩm yêu thích
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
